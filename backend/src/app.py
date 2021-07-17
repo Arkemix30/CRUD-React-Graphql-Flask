@@ -1,11 +1,12 @@
 from flask import Flask, redirect
 from flask_graphql import GraphQLView
+from flask_cors import CORS
 
 import models
 import schema
 
 app = Flask(__name__)
-app.debug = True
+CORS(app)
 
 app.add_url_rule(
     '/graphql',
@@ -24,4 +25,4 @@ def shutdown_session(exception=None):
     models.db_session.remove()
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

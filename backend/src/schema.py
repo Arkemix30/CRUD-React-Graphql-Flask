@@ -19,20 +19,18 @@ class UserInput(graphene.InputObjectType):
 # Mutation Classes
 class createUser(graphene.Mutation):
     class Arguments:
-        name = graphene.String()
-        email = graphene.String()
-        password = graphene.String()
+        User = UserInput(required=True)
     ok = graphene.Boolean()
     message = graphene.String()
     data = graphene.Field(User)
 
     #Resolver
-    def mutate(root, info, name, email, password):
+    def mutate(root, info,User=None):
         new_user = UserModel(
-            name=name,
-            email=email,
+            name=User.name,
+            email=User.email,
             password=str(
-                bc.generate_password_hash(password,10),
+                bc.generate_password_hash(User.password,10),
                 'utf-8'
             )
         )
@@ -63,22 +61,22 @@ class deleteUser(graphene.Mutation):
 class updateUser(graphene.Mutation):
     class Arguments:
         id = graphene.Int()
-        input = UserInput(required=True)
+        User = UserInput(required=True)
     ok = graphene.Boolean()
     message = graphene.String()
     data = graphene.Field(User)
 
     #Resolver
-    def mutate(root, info, id, input=None):
+    def mutate(root, info, id, User=None):
         res = db_session.query(UserModel).get(id)
         if (res is not None):
-            if input.name is not None:
-                res.name= input.name
-            if input.email is not None:
-                res.email= input.email
-            if input.password is not None:
+            if User.name is not None:
+                res.name= User.name
+            if User.email is not None:
+                res.email= User.email
+            if User.password is not None:
                 res.password = str(
-                    bc.generate_password_hash(input.password,10),
+                    bc.generate_password_hash(User.password,10),
                     'utf-8'
                 )
             print("cambiado " + res.name)
