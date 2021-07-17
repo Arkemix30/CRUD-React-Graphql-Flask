@@ -1,7 +1,6 @@
 from flask import Flask, redirect
 from flask_graphql import GraphQLView
 
-
 import models
 import schema
 
