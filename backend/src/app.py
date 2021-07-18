@@ -25,4 +25,5 @@ def shutdown_session(exception=None):
     models.db_session.remove()
 
 if __name__ == '__main__':
+    models.Base.metadata.create_all(models.engine)
     app.run(debug=True)
