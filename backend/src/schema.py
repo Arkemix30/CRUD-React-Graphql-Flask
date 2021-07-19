@@ -100,7 +100,7 @@ class Mutation(graphene.ObjectType):
 #Defining Query Class for Queries
 class Query(graphene.ObjectType):
     getAllUsers = graphene.List(User)
-    findUserById = graphene.Field(User, id=graphene.Int(), message=graphene.String())
+    findUserById = graphene.Field(User, id=graphene.Int())
 
     def resolve_getAllUsers(self, info):
         return UserModel.query.all()
