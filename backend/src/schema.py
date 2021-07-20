@@ -29,11 +29,7 @@ class createUser(graphene.Mutation):
         new_user = UserModel(
             name=User.name,
             email=User.email,
-            password=str(
-                bc.generate_password_hash(User.password,10),
-                'utf-8'
-            )
-        )
+            password=User.password)
         db_session.add(new_user)
         db_session.commit()
         ok = True
@@ -75,10 +71,7 @@ class updateUser(graphene.Mutation):
             if User.email is not None:
                 res.email= User.email
             if User.password is not None:
-                res.password = str(
-                    bc.generate_password_hash(User.password,10),
-                    'utf-8'
-                )
+                res.password = User.password
             print("cambiado " + res.name)
             db_session.commit()
             ok = True

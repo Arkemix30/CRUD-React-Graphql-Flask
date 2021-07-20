@@ -14,7 +14,7 @@ function UserCreate() {
     const {mutate, status} = useGQLMutation(createUser,user)
     const addingUser = (userI) =>{
         setUser(userI)
-        setTimeout(() => mutate(),1000);
+        setTimeout(() => mutate(),500);
     }
     return(
     <div className="container mx-auto">

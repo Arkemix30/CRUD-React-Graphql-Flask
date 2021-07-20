@@ -8,7 +8,7 @@ function User({user, removeUser}) {
 
     return(
     <div className="site-card-border-less-wrapper mt-2 mb-2">
-        <Card title={name} bordered={true} style={{ width: 300 }} actions={[<Link to={`/edit/${id}`}><EditOutlined style={{color:"blue"}}/></Link>,<button onClick={() => removeUser(id)} ><DeleteOutlined style={{color:"red"}}/></button>]}>
+        <Card title={name} bordered={true} style={{ width: 300 }} actions={[<Link to={{pathname:`/edit/${id}`, state:{id:id,name:name,email:email,password:password}}}><EditOutlined style={{color:"blue"}}/></Link>,<button onClick={() => removeUser(id)} ><DeleteOutlined style={{color:"red"}}/></button>]}>
             <div className="overflow-hidden">
                 <div>
                     <strong>Email:</strong>

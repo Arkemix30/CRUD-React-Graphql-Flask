@@ -2,12 +2,12 @@ import { useGQLQuery, useGQLMutation} from "../customHooks/useGQLQuery";
 import { useState } from "react";
 import { QueryClient  } from "react-query";
 import User from "../components/User";
-import { Spin } from "antd";
+import { Spin,Result, Button, Space} from "antd";
 import { getAll, deleteUser } from "../components/gtags";;
 
 function UserList() {
     const qC= new QueryClient()
-    const {data, isLoading, isError, refetch } = useGQLQuery('users',getAll);
+    const {data, status, refetch } = useGQLQuery('users',getAll);
     const [id, setId] = useState({
         id:''
     });
@@ -24,13 +24,6 @@ function UserList() {
             })
         }, 500);
     }
-    if (isLoading) return(
-        <div className="container mx-auto">
-            <div className="flex justify-center">
-                <Spin tip="Loading..." size="large"/>
-            </div>
-        </div>
-    )
     return(
        <div className="container mx-auto">
            <div className="flex justify-center mt-6">
@@ -38,9 +31,25 @@ function UserList() {
                     Users List
                 </h1>
            </div>
-           <div className="grid grid-cols-4 gap-2 mt-6">
+           {status === "loading" && (
+            <div className="flex justify-center mt-12">
+                <Spin tip="Loading..." size="large"/>
+            </div>
+           )}
+           {status === "success" && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-6 ">
                 {data.getAllUsers.map((u)=><User key={u.id} user={u} removeUser={removeUser}/>)}
             </div>
+           )}
+           {status === "error" &&(
+               <div className="flex justify-center">
+                    <Result
+                    status="500"
+                    title="500"
+                    subTitle="Sorry, something went wrong while fetching data..."
+                    />
+                </div>
+           )}
            </div>
     )
 }

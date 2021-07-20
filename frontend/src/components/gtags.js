@@ -34,6 +34,19 @@ export const createUser = gql`
         }
       }
     `;
+export const updateUser = gql`
+mutation updateUser($id:Int!,$User:UserInput!){
+  updateUser(id:$id,User:$User){
+    ok
+    message
+    data{
+      name
+      email
+      password
+    }
+  }
+}
+`
 
 export const deleteUser = gql`
 mutation deleteUser($id:Int!){
