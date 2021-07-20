@@ -1,12 +1,36 @@
-
+import { NavLink } from "react-router-dom";
 function Nav() {
   return (
-    <nav class="flex flex-wrap items-center justify-between p-5 bg-gray-700	">      
-        <div class="toggle hidden md:flex w-full md:w-auto text-right text-bold mt-5 md:mt-0 border-t-2 border-blue-900 md:border-none">        
-            <a href="#" class="block md:inline-block text-blue-900 hover:text-blue-500 px-3 py-3 border-b-2 border-blue-900 md:border-none">Users</a>
-            <a href="#" class="block md:inline-block text-blue-900 hover:text-blue-500 px-3 py-3 border-b-2 border-blue-900 md:border-none">About</a>
-        </div>
-    </nav>  
+      <ul className="flex">
+        <li className="flex-1 mr-2">
+          <NavLink
+            activeClassName="text-white text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700"
+            className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" 
+            to="/"
+            exact
+          >
+            Home
+          </NavLink>
+        </li>
+        <li className="flex-1 mr-2">
+          <NavLink
+             activeClassName="text-center text-white block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700"
+             className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+             to="/create"
+          >
+            Create
+          </NavLink>
+        </li>
+        <li className="text-center flex-1">
+          <NavLink
+          activeClassName="text-center text-white block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700"
+          className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+          to="/about"
+          >
+            About
+          </NavLink>
+        </li>
+      </ul>
   );
 }
 
