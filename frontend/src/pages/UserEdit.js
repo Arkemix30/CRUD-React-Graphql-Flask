@@ -105,7 +105,13 @@ function UserEdit() {
                     </li>
                   </ul> 
            </div>
-      
+           <div className="flex justify-start ml-6">
+           <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            onClick={()=> {history.push("/");}}
+           >
+               Return to List
+            </button>
+      </div>
       <div className="flex justify-center mt-9">
         <div className="w-full max-w-xs">
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={onSubmitHanlder}>

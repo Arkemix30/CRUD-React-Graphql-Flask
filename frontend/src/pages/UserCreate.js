@@ -42,7 +42,7 @@ function UserCreate() {
            >
                Return to List
             </button>
-            </div>
+      </div>
       <UserForm onSubmit={addingUser} />
     </div>
   );
