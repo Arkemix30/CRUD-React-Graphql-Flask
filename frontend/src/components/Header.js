@@ -1,4 +1,4 @@
-
+// Header Component
 function Header() {
   return (
     <div className="flex justify-center pt-8">

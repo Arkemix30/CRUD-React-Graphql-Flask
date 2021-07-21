@@ -1,5 +1,8 @@
 import { useQuery, useMutation} from "react-query";
 import { GraphQLClient, request } from "graphql-request";
+
+
+//Custom Hook using GraphQL for GQL Requests and React-query for managing them
 const endpoint = 'http://127.0.0.1:5000/graphql';
 const graphQLClient = new GraphQLClient(endpoint, {
     headers: {

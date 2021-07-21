@@ -5,8 +5,10 @@ import { useGQLMutation } from "../customHooks/useGQLQuery";
 import { updateUser } from "../components/gtags";
 
 function UserEdit() {
+
   const history = useHistory();
   const location =  useLocation();
+  // Recieving data with UseLocation.State from React Router
   const {id,name, email, password} = location.state
   const [userI, setuserI] = useState({
     name: "",
@@ -14,7 +16,7 @@ function UserEdit() {
     password: "",
   });
   
-  
+  // Setting Data for Form Display
   useEffect(() => {
     setuserI({
       name:name,
@@ -23,6 +25,7 @@ function UserEdit() {
     })
   }, [])
 
+  // Simple OnChangeHandler for Form Input Control
   const OnChangeHandler = (e) => {
     const { name, value } = e.target;
     setuserI((prevState) => ({
@@ -30,7 +33,7 @@ function UserEdit() {
       [name]: value,
     }));
   };
-
+  // Function that Retruns to User List
   const pushBack = () =>{
     setuserI({
       name:"",
@@ -43,6 +46,7 @@ function UserEdit() {
     id:id,
     User:userI
   }
+  //Simple onSubmitHandler for posting update
   const onSubmitHanlder = async(e)=>{
     e.preventDefault();
     await mutate(null,{
@@ -57,6 +61,7 @@ function UserEdit() {
     });
     
   }
+  // Custom hook for updating specific user
   const {status,mutate, isLoading} = useGQLMutation(updateUser,updatedUser)
   return (
     <div>

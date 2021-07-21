@@ -10,12 +10,16 @@ import Breadcrumb from "../components/Breadcrumb";
 function UserList() {
     const history = useHistory();
     const qC= new QueryClient()
+    // Custom hook for fetching data
     const {data, status, refetch } = useGQLQuery('users',getAll);
     const [id, setId] = useState({
         id:''
     });
+    // Custom hook for deleting specific user
     const {mutate, isSuccess} = useGQLMutation(deleteUser,id)
 
+    // Function that triggers the mutation for deleting user
+    // onSuccess updates the User List
     const removeUser = (id) =>{
         setId({ id: parseInt(id,10) })
         setTimeout(() => {
@@ -49,7 +53,7 @@ function UserList() {
                 Add new user
             </button>
             </div>
-           
+           {/* Status control for conditional rendering */}
            {status === "loading" && (
             <div className="flex justify-center mt-12">
                 <Spin tip="Loading..." size="large"/>

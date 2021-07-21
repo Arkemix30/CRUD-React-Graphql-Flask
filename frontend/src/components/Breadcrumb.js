@@ -1,4 +1,4 @@
-
+//Breadcrumb Reusable Component
 function Breadcrumb({parent}) {
     return(
         <ul className="flex text-sm lg:text-base">

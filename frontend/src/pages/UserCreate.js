@@ -13,6 +13,8 @@ function UserCreate() {
     email: "",
     password: "",
   });
+
+  //Using custom hook for creating user
   const { mutate, status } = useGQLMutation(createUser, user);
   const addingUser = (userI) => {
     setUser(userI);
@@ -23,6 +25,7 @@ function UserCreate() {
       <div className="flex justify-center mt-2">
         <h1 className="text-xl text-white">Add New User</h1>
       </div>
+      {/* Status control for conditional rendering */}
       {status === "success" && (
         <div className="flex justify-end mt-3 mr-6">
           <Alert message="User Added" type="success" closable showIcon />
@@ -36,6 +39,7 @@ function UserCreate() {
       <div className="flex justify-end mr-6 mt-2">
         <Breadcrumb parent="Create User"/>
       </div>
+      {/* Simple Button to return back using useHistory from React Router */}
       <div className="flex justify-start ml-6">
            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
             onClick={()=> {historyE.push("/");}}

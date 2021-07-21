@@ -1,5 +1,6 @@
 import { gql } from "graphql-tag";
 
+//All GraphQL queries 
 export const getAll = gql`
   query {
     getAllUsers {
