@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 const qC = new QueryClient();
 
 ReactDOM.render(
+  //Making use of React Router
   <React.StrictMode>
     <QueryClientProvider client={qC}>
     <App />
