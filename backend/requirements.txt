@@ -22,6 +22,7 @@ MarkupSafe==2.0.1
 promise==2.3
 psycopg2==2.9.1
 pycparser==2.20
+python-dotenv==0.18.0
 requests==2.26.0
 Rx==1.6.1
 singledispatch==3.6.2
