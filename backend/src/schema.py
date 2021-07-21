@@ -1,6 +1,5 @@
 from sqlalchemy.sql.expression import false, true, update
 import graphene
-import flask_bcrypt as bc
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 from models import db_session, User as UserModel
