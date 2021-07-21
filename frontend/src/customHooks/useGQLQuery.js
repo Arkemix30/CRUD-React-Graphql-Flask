@@ -18,7 +18,3 @@ export const useGQLMutation = (query, variables, config ) =>{
     return useMutation(postData,config)
 }
 
-export const useGQLFind = (key,query, variables, config )=>{
-  const findUser = async() => await graphQLClient.request(query,variables)
-  return useQuery(key, findUser, config);
-}

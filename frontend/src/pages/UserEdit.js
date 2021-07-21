@@ -45,19 +45,23 @@ function UserEdit() {
   }
   const onSubmitHanlder = async(e)=>{
     e.preventDefault();
-    await mutate();
-    setuserI({
-      id:"",
-      name:"",
-      email:"",
-      password:""
-    })
+    await mutate(null,{
+      onSuccess: ()=>{
+        setuserI({
+          id:"",
+          name:"",
+          email:"",
+          password:""
+        })
+      }
+    });
+    
   }
   const {status,mutate, isLoading} = useGQLMutation(updateUser,updatedUser)
   return (
-    <div className="container mx-auto">
-      <div className="flex justify-center mt-6">
-        <h1 className="text-xl">Editing User</h1>
+    <div>
+      <div className="flex justify-center mt-2">
+        <h1 className="text-xl text-white">Editing User</h1>
       </div>
       { status === 'success' &&
         <div className="container mx-auto">
@@ -65,7 +69,43 @@ function UserEdit() {
             <Alert message="User Updated" type="success" closable showIcon />
           </div>
         </div>
-    }
+      }
+      <div className="flex justify-end mr-6 mt-2">
+           <ul className="flex  text-sm lg:text-base">
+                    <li className="inline-flex items-center">
+                      <a href="/" className="text-gray-500">Home</a>
+                      <svg
+                        className="h-5 w-auto text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </li>
+                    <li className="inline-flex items-center">
+                      <a href="/" className="text-blue-500">Edit User</a>
+                      <svg
+                        className="h-5 w-auto text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </li>
+                    <li className="inline-flex items-center">
+                      <a href="/" className="text-blue-500">{id}</a>
+                    </li>
+                  </ul> 
+           </div>
+      
       <div className="flex justify-center mt-9">
         <div className="w-full max-w-xs">
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={onSubmitHanlder}>

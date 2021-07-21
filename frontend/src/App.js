@@ -1,16 +1,15 @@
 import { BrowserRouter as Router,Route,Switch } from "react-router-dom";
-
 import UserCreate from "./pages/UserCreate";
 import UserEdit from "./pages/UserEdit";
 import UserList from "./pages/UserList"
-import Nav from "./components/Nav";
+import Header from "./components/Header";
 
 
 function App() {
   return (
-      <div className="App">
+      <div className="App container mx-auto">
         <Router basename="/user">
-        <Nav/>
+          <Header/>
           <Switch>
             <Route path="/" exact component={UserList}/>
             <Route path="/create" component={UserCreate}/>

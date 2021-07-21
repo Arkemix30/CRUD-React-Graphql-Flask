@@ -1,9 +1,10 @@
+from os import environ 
 from sqlalchemy import *
 from sqlalchemy.orm import (scoped_session, sessionmaker, relationship,
                             backref)
 from sqlalchemy.ext.declarative import declarative_base
-
-engine = create_engine('postgresql+psycopg2://postgres:toor@localhost:5433/epictech', convert_unicode=True)
+dburi= environ.get('DATA_BASE_URI')
+engine = create_engine(f'postgresql+psycopg2://{dburi}', convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))

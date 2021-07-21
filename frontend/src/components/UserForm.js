@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 function UserForm(props) {
-
+  const history = useHistory();
     const [userInput, setUserInput] = useState({
         name: "",
         email: "",
@@ -16,6 +17,14 @@ function UserForm(props) {
         }));
     };
 
+    const pushBack = () =>{
+      setUserInput({
+        name:"",
+        email: "",
+        password: ""
+      });
+      history.push("/");
+    }
     const submitHandler = (e) => {
         e.preventDefault();
         props.onSubmit({
@@ -81,7 +90,14 @@ function UserForm(props) {
               onChange={OnChangeHandler}
             ></input>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-around">
+            <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button"
+                onClick={pushBack}
+              >
+                Cancel
+              </button>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"

@@ -1,11 +1,14 @@
+import { useHistory } from "react-router";
 import { useGQLQuery, useGQLMutation} from "../customHooks/useGQLQuery";
 import { useState } from "react";
 import { QueryClient  } from "react-query";
 import User from "../components/User";
-import { Spin,Result, Button, Space} from "antd";
-import { getAll, deleteUser } from "../components/gtags";;
+import { Spin,Result, Alert} from "antd";
+import { getAll, deleteUser } from "../components/gtags";
+import Breadcrumb from "../components/Breadcrumb";
 
 function UserList() {
+    const history = useHistory();
     const qC= new QueryClient()
     const {data, status, refetch } = useGQLQuery('users',getAll);
     const [id, setId] = useState({
@@ -25,12 +28,28 @@ function UserList() {
         }, 500);
     }
     return(
-       <div className="container mx-auto">
-           <div className="flex justify-center mt-6">
-                <h1 className="text-xl">
+       <div>
+           <div className="flex justify-center mt-2">
+                <h1 className="text-xl text-white">
                     Users List
                 </h1>
            </div>
+           {isSuccess === true &&(
+                <div className="flex justify-end mr-6">
+                    <Alert message="User deleteded" type="success" closable showIcon />
+                </div>
+           )}
+           <div className="flex justify-end mr-6 mt-2">
+                <Breadcrumb parent="User List"/>
+           </div>
+           <div className="flex justify-start ml-6">
+           <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            onClick={()=> {history.push("/create");}}
+           >
+                Add new user
+            </button>
+            </div>
+           
            {status === "loading" && (
             <div className="flex justify-center mt-12">
                 <Spin tip="Loading..." size="large"/>
