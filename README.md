@@ -14,7 +14,7 @@ _Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all th
 $ pip install -r requirements.txt
 ```
 
-### Set up for Backend 🔧
+### Set up the React App 🔧
 
 _Just run the command:_
 
