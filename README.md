@@ -56,6 +56,7 @@ _Frontend:_
 
 * [React](https://reactjs.org/) - FrontEnd Framework
 * [GraphQL-Request](https://github.com/prisma-labs/graphql-request) - Minimal GraphQL client
+* [Ant Design](https://ant.design/) - React UI Library
 * [React Router](https://reactrouter.com/) - React Router is a collection of navigational components 
 * [React Query](https://react-query.tanstack.com/) - Hooks for fetching, caching and updating asynchronous data in React
 * [GraphQL-Tag](https://www.npmjs.com/package/graphql-tag) - A JavaScript template literal tag that parses GraphQL query strings into the standard GraphQL AST.
